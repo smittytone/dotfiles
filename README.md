@@ -11,5 +11,5 @@ These are new machine configuration files, eg. `.bash_profile`, for a (my) macOS
 - `launchagents/*` -> `~/Library/LaunchAgents/*`
 - `quicklook/*` -> `~/Library/quicklook/*`
 - `services/*` -> `~/Library/services/*`
-- `HomebrewMe.terminal` -> Terminal > Preferences > Profiles > Import...
+- `HomebrewMe.terminal` -> **Terminal > Preferences > Profiles > Import...**
 - `vs_settings.json` -> `~/Library/'Application Support'/Code/User/settings.json`
