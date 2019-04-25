@@ -7,6 +7,7 @@ alias ls='gls -lhF --group-directories-first --color=auto'
 alias la='gls -lahF --group-directories-first --color=auto'
 alias gg='cd ~/documents/github'
 alias python='python3'
+alias nano='/usr/local/bin/nano'
 alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
 
 # Set ls colors
