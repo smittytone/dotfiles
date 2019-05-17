@@ -13,3 +13,5 @@ These are new machine configuration files, eg. `.bash_profile`, for a (my) macOS
 - `services/*` -> `~/Library/services/*`
 - `HomebrewMe.terminal` -> **Terminal > Preferences > Profiles > Import...**
 - `vs_settings.json` -> `~/Library/'Application Support'/Code/User/settings.json`
+- `bbedit_squirrel.plist` -> `~/Library/'Application Support'/BBEdit/'Language Modules'/Squirrel.plist`
+- `pixelmator_shapes.pxs` -> **Pixelmator > File > Import...**
