@@ -20,7 +20,7 @@ alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
 LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 
 # Set git directory
-GIT=~/Documents/GitHub
+export GIT=~/Documents/GitHub
 export PATH="$PATH:$GIT/scripts"
 
 # Set python module directory
