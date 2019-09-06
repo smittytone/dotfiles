@@ -1,1 +1,2 @@
+# Make AirDrop work with Ethernet too
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true

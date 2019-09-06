@@ -1,3 +1,8 @@
+# Set up Expose hot corners:
+# Top Left:     app windows
+# Bottom Left:  all apps
+# Top Right:    Show desktop
+# Bottom Right: Lock screen
 defaults write com.apple.dock wvous-bl-corner -int 2
 defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.dock wvous-br-corner -int 12

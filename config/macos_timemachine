@@ -1,1 +1,2 @@
+# Don't suggest inserted disks might be used for TimeMachine
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true

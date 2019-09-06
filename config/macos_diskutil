@@ -1,2 +1,3 @@
+# Show Disk Utility's debug menu and extend the disk image options it offers
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
