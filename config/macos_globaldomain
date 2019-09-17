@@ -1,5 +1,5 @@
 # Adjust folder springiness behavior, disable system spell checking
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
-defaults write NSGlobalDomain com.apple.springing.delay -float 5.0
+defaults write NSGlobalDomain com.apple.springing.delay -float 0.8
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
