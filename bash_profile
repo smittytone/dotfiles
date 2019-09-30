@@ -21,7 +21,8 @@ LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 
 # Set git directory
 export GIT="$HOME/Documents/GitHub"
-export PATH="$PATH:$GIT/scripts"
+export SCRIPTS="$GIT/scripts"
+export PATH="$PATH:$SCRIPTS"
 
 # Set python module directory
 export PYTHONPATH="$GIT/modules"
