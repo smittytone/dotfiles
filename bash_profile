@@ -27,3 +27,5 @@ export PATH="$PATH:$SCRIPTS"
 # Set python module directory
 export PYTHONPATH="$GIT/modules"
 
+# Homebrew...
+export PATH="/usr/local/sbin:$PATH"
