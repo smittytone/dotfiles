@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>19A583</string>
+	<string>19A602</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDocumentTypes</key>
@@ -18,6 +18,11 @@
 				<string>net.multimarkdown.text</string>
 				<string>org.vim.markdown-file</string>
 				<string>com.unknown.md</string>
+				<string>com.foldingtext.FoldingText.document</string>
+				<string>dyn.ah62d4rv4ge8043a</string>
+				<string>dyn.ah62d4rv4ge80445e</string>
+				<string>dyn.ah62d4rv4ge8042pwrrwg875s</string>
+				<string>dyn.ah62d4rv4ge8045pe</string>
 			</array>
 		</dict>
 	</array>
@@ -70,7 +75,7 @@
 	<key>DTXcodeBuild</key>
 	<string>11A1027</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.12</string>
+	<string>10.6</string>
 	<key>QLNeedsToBeRunInMainThread</key>
 	<true/>
 	<key>QLPreviewHeight</key>
