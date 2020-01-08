@@ -29,3 +29,6 @@ export PYTHONPATH="$GIT/modules"
 
 # Homebrew...
 export PATH="/usr/local/sbin:$PATH"
+
+# Reveal Shell in use
+echo "Running Shell from $SHELL"
