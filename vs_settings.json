@@ -4,8 +4,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "extensions.ignoreRecommendations": true,
     "editor.wordWrap": "on",
-    "editor.fontSize": 13,
-    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'SF mono', 'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontWeight": "500",
     "workbench.fontAliasing": "antialiased",
     "cSpell.userWords": [
