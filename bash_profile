@@ -22,13 +22,16 @@ LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 # Set git directory
 export GIT="$HOME/Documents/GitHub"
 export SCRIPTS="$GIT/scripts"
-export PATH="$PATH:$SCRIPTS"
+export PATH="$SCRIPTS:$PATH"
 
 # Set python module directory
 export PYTHONPATH="$GIT/modules"
 
 # Homebrew...
 export PATH="/usr/local/sbin:$PATH"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Reveal Shell in use
 echo "Running Shell from $SHELL"
