@@ -499,5 +499,7 @@
     "window.zoomLevel": 0,
     "editor.detectIndentation": false,
     "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": true
+    "files.trimFinalNewlines": true,
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.emptySelectionClipboard": false
 }
