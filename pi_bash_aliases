@@ -1,0 +1,8 @@
+alias la='ls -lAh --color=auto --group-directories-first'
+alias ls='ls -l --color=auto --group-directories-first'
+alias rs='sudo shutdown -r now'
+alias sd='sudo shutdown -h now'
+alias update='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y'
+alias python='python3'
+GIT="$HOME/Documents/GitHub"
+SCRIPTS="$GIT/scripts"
