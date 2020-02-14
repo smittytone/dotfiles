@@ -4,5 +4,8 @@ alias rs='sudo shutdown -r now'
 alias sd='sudo shutdown -h now'
 alias update='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y'
 alias python='python3'
+
 GIT="$HOME/Documents/GitHub"
 SCRIPTS="$GIT/scripts"
+
+export PS1='$PWD> '
