@@ -501,5 +501,6 @@
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "editor.copyWithSyntaxHighlighting": false,
-    "editor.emptySelectionClipboard": false
+    "editor.emptySelectionClipboard": false,
+    "workbench.colorTheme": "Atom One Dark"
 }
