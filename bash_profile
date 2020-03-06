@@ -33,5 +33,11 @@ export PATH="/usr/local/sbin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# FT232H
+if [ -e /dev/cu.usbserial-* ]; then
+    echo "FT232H connected"
+    export BLINKA_FT232H=1
+fi
+
 # Reveal Shell in use
 echo "Running Shell from $SHELL"
