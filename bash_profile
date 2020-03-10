@@ -39,5 +39,11 @@ if [ -e /dev/cu.usbserial-* ]; then
     export BLINKA_FT232H=1
 fi
 
+# MCP2221
+if [ -e /dev/cu.usbmodem* ]; then
+    echo "MCP2221 connected"
+    export BLINKA_MCP2221=1
+fi
+
 # Reveal Shell in use
 echo "Running Shell from $SHELL"
