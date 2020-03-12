@@ -34,15 +34,15 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # FT232H
+export BLINKA_FT232H=1
 if [ -e /dev/cu.usbserial-* ]; then
     echo "FT232H connected"
-    export BLINKA_FT232H=1
 fi
 
 # MCP2221
+export BLINKA_MCP2221=1
 if [ -e /dev/cu.usbmodem* ]; then
     echo "MCP2221 connected"
-    export BLINKA_MCP2221=1
 fi
 
 # Reveal Shell in use
