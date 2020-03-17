@@ -29,14 +29,16 @@
 /Users/smitty/Documents/GitHub/Unicoder
 /Users/smitty/Documents/GitHub/TaskLight
 /Users/smitty/Documents/GitHub/HT16K33Segment-Python
+/Users/smitty/Documents/GitHub/SSD1306OLED-Python
 /Users/smitty/Documents/GitHub/FT232H-Mac
+/Users/smitty/Documents/GitHub/MCP2221-Mac
 
 # ****** MY IMP LIBRARIES ******
-/Users/smitty/Documents/GitHub/generic
-/Users/smitty/Documents/GitHub/HT16K33Bargraph
-/Users/smitty/Documents/GitHub/HT16K33Matrix
-/Users/smitty/Documents/GitHub/HT16K33Segment
-/Users/smitty/Documents/GitHub/HT16K33SegmentBig
+/Users/smitty/Documents/GitHub/generic-squirrel
+/Users/smitty/Documents/GitHub/HT16K33Bargraph-Squirrel
+/Users/smitty/Documents/GitHub/HT16K33Matrix-Squirrel
+/Users/smitty/Documents/GitHub/HT16K33Segment-Squirrel
+/Users/smitty/Documents/GitHub/HT16K33SegmentBig-Squirrel
 /Users/smitty/Documents/GitHub/Location
 
 # ****** MY IMP APPLICATIONS ******
