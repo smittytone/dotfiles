@@ -1,0 +1,11 @@
+[Unit]
+Description=Start VNC Server Virtual Desktop
+    
+[Service]
+Type=oneshot
+ExecStart=/bin/su pi -c /usr/bin/vncserver
+ExecStop=/usr/bin/vncserver -kill :1
+RemainAfterExit=yes
+    
+[Install]
+WantedBy=multi-user.target
