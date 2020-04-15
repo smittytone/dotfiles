@@ -7,6 +7,6 @@ alias python='python3'
 
 GIT="$HOME/Documents/GitHub"
 SCRIPTS="$GIT/scripts"
-export PATH="$SCRIPTS:$PATH"
 
+export PATH="$SCRIPTS:$PATH"
 export PS1='$PWD> '
