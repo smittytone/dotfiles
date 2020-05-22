@@ -13,7 +13,7 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:uppe>'
 
 # PROMPT
-PROMPT='%F{magenta}%d%f > '
+PROMPT='%F{13}%K{0}%d%k%f > '
 
 # GIT STATE RIGHT PROMPT
 autoload -Uz vcs_info

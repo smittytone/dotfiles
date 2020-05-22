@@ -1,4 +1,4 @@
-# Adjust trackpade behaviour: two-finger tap for contextual menus
+# Adjust trackpad behaviour: two-finger tap for contextual menus
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -int 1
 # Adjust mouse behaviour: right-click for contextual menus
