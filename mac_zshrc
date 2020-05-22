@@ -1,0 +1,61 @@
+# ZSH OPTIONS
+setopt AUTO_CD
+setopt CORRECT
+
+# AUTOCOMPLETION
+autoload -Uz compinit && compinit
+# Case-insensitive path-completion...
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+# PROMPT
+PROMPT='%F{magenta}%d%f > '
+
+# GIT STATE RIGHT PROMPT
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git:*' formats '%F{cyan}[%b]%f'
+zstyle ':vcs_info:*' enable git
+
+# ALIASES
+# Lists...
+alias ls='gls -lhF --group-directories-first --color=auto'
+alias la='gls -lahF --group-directories-first --color=auto'
+
+# Tools
+alias python='python3'
+alias nano='/usr/local/bin/nano'
+alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
+
+# LS COLOURS
+LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
+
+# PATH VARIABLES
+# Git...
+export GIT="$HOME/Documents/GitHub"
+export SCRIPTS="$GIT/scripts"
+export PATH="$SCRIPTS:$PATH"
+
+# Homebrew...
+export PATH="/usr/local/sbin:$PATH"
+
+# Rust...
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# FT232H SUPPORT
+unsetopt NOMATCH
+if [ -e /dev/cu.usbserial-* ]; then
+    export BLINKA_FT232H=1
+    echo "FT232H connected"
+fi
+
+# MCP2221 SUPPORT
+if [ -e /dev/cu.usbmodem* ]; then
+    export BLINKA_MCP2221=1
+    echo "MCP2221 connected"
+fi
+
+# REVEAL SHELL IN USE
+echo "Running Shell from $SHELL"
