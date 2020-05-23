@@ -1,0 +1,46 @@
+# HISTORY
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+bindkey -e
+
+zstyle :compinstall filename '/home/pi/.zshrc'
+
+# AUTO-COMPLETION
+autoload -Uz compinit
+compinit
+
+# ZSH OPTIONS
+setopt AUTO_CD
+setopt CORRECT
+
+# LEFT PROMPT
+PROMPT='%F{13}%K{0}%d%k%f > '
+
+# RIGHT PROMPT: GIT STATE
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt PROMPT_SUBST
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git:*' formats '%F{cyan}[%b]%f'
+zstyle ':vcs_info:*' enable git
+
+#ALIASES
+alias ls='ls -l --group-directories-first --color=auto'
+alias la='LC_COLLATE=C ls -lah --group-directories-first --color=auto'
+alias sd='sudo shutdown -h now'
+alias rs='sudo shutdown -r now'
+alias python='python3'
+
+# LS COLOURS
+LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
+
+# DIRECTORIES
+export GIT="$HOME/Documents/GitHub"
+export SCRIPTS="$GIT/scripts"
+export PATH="$SCRIPTS:$PATH"
+
+# REVEAL SHELL
+echo "Running Shell from $SHELL"
