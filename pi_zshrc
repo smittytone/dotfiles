@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Pi)
 #
-# 1.0.2
+# 1.0.3
 
 # Options
 setopt AUTO_CD
@@ -19,10 +19,10 @@ autoload -Uz compinit && compinit
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{13}%K{0}%d%k%f > '
+PROMPT='%F{red}%K{0}%d%k%f > '
 
 # ...right-hand side: use for Git repos
-# FROM 1.0.5 - use a git check to show status as well as repo namw
+# FROM 1.0.2 - use a git check to show status as well as repo namw
 git_prompt() {
     local ref
     is_dirty() {
@@ -30,13 +30,15 @@ git_prompt() {
     }
     ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
-        ref="%F{cyan}[${vcs_info_msg_0_}]%f"
+        ref="%F{cyan}[${ref}]%f"
         if is_dirty; then
             ref="%F{yellow}%B!%b%f ${ref}"
         else
             ref="%F{green}%B#%b%f ${ref}"
         fi
         RPROMPT=$ref
+    else
+        RPROMPT=""
     fi
 }
 
@@ -70,6 +72,14 @@ alias python='python3'
 # List operation colour scheme
 LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 
+
+# Functions...
+# ...git combo
+function gitsync() {
+    git add .
+    git commit -m "$1"
+    git push
+}
 
 # Path variables...
 # ...Git repos
