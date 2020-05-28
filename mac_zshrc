@@ -1,5 +1,5 @@
 # smittytone's zsh profie
-# 
+#
 # 1.0.5
 
 # Options
@@ -24,13 +24,36 @@ fi
 PROMPT='%F{13}%K{0}%d%k%f > '
 
 # ...right-hand side: use for Git repos
+
+git_prompt() {
+    local ref
+    is_dirty() {
+        test -n "$(git status --porcelain --ignore-submodules)"
+    }
+    ref="$vcs_info_msg_0_"
+    if [[ -n "$ref" ]]; then
+        if is_dirty; then
+            ref="${ref} !"
+        else
+            ref="${ref} "
+        fi
+        RPROMPT=$ref
+    fi
+}
+
+autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+precmd_vcs_info() {
+    vcs_info
+    git_prompt
+}
+add-zsh-hook precmd precmd_vcs_info
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{cyan}[%b]%f'
+#RPROMPT="$vcs_info_msg_0_"
 zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes false
+zstyle ':vcs_info:git*' formats '%F{cyan}[%b]%f'
+zstyle ':vcs_info:git*' actionformats '%F{cyan}[%b (%a)]%f'
 
 
 # Aliases...
@@ -65,9 +88,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Functions...
 # ...single command Git push
 function gitsync() {
-     git add .
-     git commit -m "$1"
-     git push
+    git add .
+    git commit -m "$1"
+    git push
 }
 
 
