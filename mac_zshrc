@@ -24,7 +24,7 @@ fi
 PROMPT='%F{13}%K{0}%d%k%f > '
 
 # ...right-hand side: use for Git repos
-
+# FROM 1.0.5 - use a git check to show status as well as repo namw
 git_prompt() {
     local ref
     is_dirty() {
@@ -32,10 +32,11 @@ git_prompt() {
     }
     ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
+        ref="%F{cyan}[${vcs_info_msg_0_}]%f"
         if is_dirty; then
-            ref="${ref} !"
+            ref="%F{yellow}%B!%b%f ${ref}"
         else
-            ref="${ref} "
+            ref="%F{green}%B#%b%f ${ref}"
         fi
         RPROMPT=$ref
     fi
@@ -52,7 +53,7 @@ setopt prompt_subst
 #RPROMPT="$vcs_info_msg_0_"
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
-zstyle ':vcs_info:git*' formats '%F{cyan}[%b]%f'
+zstyle ':vcs_info:git*' formats '%b'
 zstyle ':vcs_info:git*' actionformats '%F{cyan}[%b (%a)]%f'
 
 
