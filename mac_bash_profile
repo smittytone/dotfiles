@@ -1,3 +1,6 @@
+# smittytone's bash profile
+# 1.0.10
+
 # Set shell prompt
 #export PS1='\u@\h:\w > '
 export PS1='$PWD > '
@@ -13,7 +16,7 @@ alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
 # Set ls colors
 # See http://linux-sxs.org/housekeeping/lscolors.html
 # NOTE Using gls
-# 
+#
 # directories: plain cyan
 # aliases: plain yellow
 # executable: plain purple
@@ -32,6 +35,10 @@ export PATH="/usr/local/sbin:$PATH"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# FROM 1.0.10
+# Homebrew
+export HOMEBREW_EDITOR="/usr/local/bin/nano"
 
 # FT232H
 if [ -e /dev/cu.usbserial-* ]; then
