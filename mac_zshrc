@@ -1,4 +1,4 @@
-# smittytone's zsh profie
+# smittytone's zsh profile (Mac)
 #
 # 1.0.5
 
@@ -50,7 +50,6 @@ precmd_vcs_info() {
 }
 add-zsh-hook precmd precmd_vcs_info
 setopt prompt_subst
-#RPROMPT="$vcs_info_msg_0_"
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:git*' formats '%b'
