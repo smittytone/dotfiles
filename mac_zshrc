@@ -32,7 +32,7 @@ git_prompt() {
     vcs_info
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
-        ref="%F{cyan}[${vcs_info_msg_0_}]%f"
+        ref="%F{cyan}[${ref}]%f"
         if is_dirty; then
             ref="%F{yellow}%B!%b%f ${ref}"
         else
