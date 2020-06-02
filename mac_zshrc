@@ -1,17 +1,23 @@
 # smittytone's zsh profile (Mac)
 #
-# 1.0.6
+# 1.0.7
 
 # Options
 setopt AUTO_CD
 setopt CORRECT
 
 
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+
+
 # Autocompletion...
 autoload -Uz compinit && compinit
 
 # ...add case-insensitive path-completion for macOS
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:uppe>'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 # ...homebrew
 if [ type brew &>/dev/null ]; then
@@ -51,7 +57,6 @@ add-zsh-hook precmd git_prompt
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:git*' formats '%b'
-zstyle ':vcs_info:git*' actionformats '%F{cyan}[%b (%a)]%f'
 
 
 # Aliases...

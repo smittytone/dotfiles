@@ -8,7 +8,7 @@ setopt CORRECT
 
 
 # History
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -24,11 +24,11 @@ PROMPT='%F{red}%K{0}%d%k%f > '
 # ...right-hand side: use for Git repos
 # FROM 1.0.2 - use a git check to show status as well as repo namw
 git_prompt() {
-    local ref
     is_dirty() {
         test -n "$(git status --porcelain --ignore-submodules)"
     }
-    ref="$vcs_info_msg_0_"
+    vcs_info
+    local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
         ref="%F{cyan}[${ref}]%f"
         if is_dirty; then
@@ -38,22 +38,17 @@ git_prompt() {
         fi
         RPROMPT=$ref
     else
-        RPROMPT=""
+        RPROMPT=''
     fi
 }
 
+setopt prompt_subst
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
-precmd_vcs_info() {
-    vcs_info
-    git_prompt
-}
-add-zsh-hook precmd precmd_vcs_info
-setopt prompt_subst
+add-zsh-hook precmd git_prompt
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:git*' formats '%b'
-zstyle ':vcs_info:git*' actionformats '%F{cyan}[%b (%a)]%f'
 
 
 # Aliases...
@@ -73,19 +68,20 @@ alias python='python3'
 LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 
 
-# Functions...
-# ...git combo
-function gitsync() {
-    git add .
-    git commit -m "$1"
-    git push
-}
-
 # Path variables...
 # ...Git repos
 export GIT="$HOME/Documents/GitHub"
 export SCRIPTS="$GIT/scripts"
 export PATH="$SCRIPTS:$PATH"
+
+
+# Functions...
+# ...single command Git push
+function gitsync() {
+    git add .
+    git commit -m "$1"
+    git push
+}
 
 
 # Display which shell is use
