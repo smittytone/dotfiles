@@ -42,7 +42,7 @@ git_prompt() {
         if is_dirty; then
             ref="%F{yellow}%B!%b%f ${ref}"
         else
-            ref="%F{green}%B#%b%f ${ref}"
+            ref="%F{green}%B•%b%f ${ref}"
         fi
         RPROMPT=$ref
     else
