@@ -5,3 +5,4 @@ set autoindent
 set trimblanks
 set keycolor cyan,black
 set titlecolor white,red
+set mouse
