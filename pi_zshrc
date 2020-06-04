@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Pi)
 #
-# 1.0.3
+# 1.0.4
 
 # Options
 setopt AUTO_CD
@@ -50,6 +50,8 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:git*' formats '%b'
 
+# ...input prompt
+PS2="%_ ... "
 
 # Aliases...
 # ...list operations

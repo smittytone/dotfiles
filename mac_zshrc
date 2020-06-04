@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# 1.0.7
+# 1.0.8
 
 # Options
 setopt AUTO_CD
@@ -9,8 +9,8 @@ setopt CORRECT
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100
+SAVEHIST=100
 
 
 # Autocompletion...
@@ -58,6 +58,8 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:git*' formats '%b'
 
+# ...input prompt
+PS2="%_ ... "
 
 # Aliases...
 # ...list operations
