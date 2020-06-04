@@ -72,7 +72,7 @@ LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 
 # Path variables...
 # ...Git repos
-export GIT="$HOME/Documents/GitHub"
+export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
 export PATH="$SCRIPTS:$PATH"
 
