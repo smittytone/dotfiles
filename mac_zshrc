@@ -5,6 +5,7 @@
 # Options
 setopt AUTO_CD
 setopt CORRECT
+unsetopt NOMATCH
 
 
 # History
@@ -100,8 +101,7 @@ function gitsync() {
 
 
 # FT232H support...
-# ...report if device is connected and export required variabls
-unsetopt NOMATCH
+# ...report if device is connected and export required variables
 if [ -e /dev/cu.usbserial-* ]; then
     export BLINKA_FT232H=1
     echo "FT232H connected"
@@ -109,7 +109,7 @@ fi
 
 
 # MCP2221 support...
-# ...report if device is connected and export required variabls
+# ...report if device is connected and export required variables
 if [ -e /dev/cu.usbmodem* ]; then
     export BLINKA_MCP2221=1
     echo "MCP2221 connected"
