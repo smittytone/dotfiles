@@ -7,12 +7,14 @@
 		<dict>
 			<key>NSBackgroundColorName</key>
 			<string>background</string>
+			<key>NSBackgroundSystemColorName</key>
+			<string>systemBlueColor</string>
 			<key>NSIconName</key>
-			<string>NSTouchBarDocuments</string>
+			<string>NSTouchBarAdd</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Copy File Path</string>
+				<string>New ZSH Script</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
