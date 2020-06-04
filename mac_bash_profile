@@ -1,5 +1,5 @@
 # smittytone's bash profile
-# 1.0.10
+# 1.1.0
 
 # Set shell prompt
 #export PS1='\u@\h:\w > '

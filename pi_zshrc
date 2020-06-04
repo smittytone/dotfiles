@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Pi)
 #
-# 1.0.4
+# 1.1.0
 
 # Options
 setopt AUTO_CD
@@ -9,8 +9,8 @@ setopt CORRECT
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100
+SAVEHIST=100
 
 
 # Autocompletion
