@@ -19,7 +19,7 @@ autoload -Uz compinit && compinit
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{red}%K{0}%d%k%f > '
+PROMPT='%F{white}%K{red}%d%k%f > '
 
 # ...right-hand side: use for Git repos
 # FROM 1.0.2 - use a git check to show status as well as repo namw
