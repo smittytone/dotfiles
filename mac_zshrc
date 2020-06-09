@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# 1.1.0
+# 1.1.1
 
 # Options
 setopt AUTO_CD
@@ -81,13 +81,13 @@ LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 # ...Git repos
 export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
-export PATH="$SCRIPTS:$PATH"
+export PATH="$PATH:$SCRIPTS"
 
 # ...homebrew
-export PATH="/usr/local/sbin:$PATH"
+export PATH="$PATH:/usr/local/sbin"
 
 # ...Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 
 # FROM 1.0.5
