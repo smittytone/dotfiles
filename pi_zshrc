@@ -34,7 +34,7 @@ git_prompt() {
         if is_dirty; then
             ref="%F{yellow}%B!%b%f ${ref}"
         else
-            ref="%F{green}%B#%b%f ${ref}"
+            ref="%F{green}%B•%b%f ${ref}"
         fi
         RPROMPT=$ref
     else
@@ -75,7 +75,7 @@ LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
 export PATH="$SCRIPTS:$PATH"
-
+export PATH="$HOME/bin:$PATH"
 
 # Functions...
 # ...single command Git push
