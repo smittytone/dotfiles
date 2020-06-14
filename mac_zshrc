@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# 1.1.1
+# 1.1.2
 
 # Options
 setopt AUTO_CD
@@ -15,16 +15,12 @@ SAVEHIST=100
 
 
 # Autocompletion...
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit
+
 
 # ...add case-insensitive path-completion for macOS
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-
-# ...homebrew
-if [ type brew &>/dev/null ]; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
 
 # Prompts...
 # ...left-hand side
@@ -60,12 +56,12 @@ zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:git*' formats '%b'
 
 # ...input prompt
-PS2="%_ ... "
+PS2="%_... "
 
 # Aliases...
 # ...list operations
-alias ls='gls -lhF --group-directories-first --color=auto'
-alias la='gls -lahF --group-directories-first --color=auto'
+alias ls='gls -lhF --group-directories-first --color'
+alias la='gls -lahF --group-directories-first --color'
 
 # ...tools
 alias python='python3'
@@ -74,20 +70,20 @@ alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
 
 
 # List operation colour scheme
-LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
+export LS_COLORS="$LS_COLORS:di=11;36:ln=0;93:ex=1;35"
 
 
 # Path variables...
 # ...Git repos
 export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
-export PATH="$PATH:$SCRIPTS"
+export PATH="$HOME/bin:$SCRIPTS:$PATH"
 
 # ...homebrew
-export PATH="$PATH:/usr/local/sbin"
+export PATH="/usr/local/sbin:$PATH"
 
 # ...Rust
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # FROM 1.0.5
