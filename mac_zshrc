@@ -70,7 +70,7 @@ alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
 
 
 # List operation colour scheme
-export LS_COLORS="$LS_COLORS:di=11;36:ln=0;93:ex=1;35"
+export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
 
 
 # Path variables...
