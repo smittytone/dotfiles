@@ -89,10 +89,18 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # FROM 1.0.5
 # Functions...
 # ...single command Git push
-function gitsync() {
+gitsync() {
     git add .
     git commit -m "$1"
     git push
+}
+
+mdfile() {
+    [[ ! -e untitled.md ]] && touch untitled.md
+}
+
+zfile() {
+    [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.x\n" > untitled.zsh
 }
 
 
