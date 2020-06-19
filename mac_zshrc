@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.1.3
+# Version 1.2.0
 
 # Options
 setopt AUTO_CD
@@ -95,6 +95,8 @@ gitsync() {
     git push
 }
 
+# FROM 1.2.0
+# Convenience functions for generating certain (.md, .zsh) file types
 mdfile() {
     [[ ! -e untitled.md ]] && touch untitled.md
 }
