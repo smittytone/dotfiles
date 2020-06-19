@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Pi)
 #
-# 1.1.1
+# 1.2.0
 
 # Options
 setopt AUTO_CD
@@ -14,7 +14,8 @@ SAVEHIST=100
 
 
 # Autocompletion
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit
 
 
 # Prompts...
@@ -67,22 +68,32 @@ alias python='python3'
 
 
 # List operation colour scheme
-LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
+export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
 
 
 # Path variables...
 # ...Git repos
 export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
-export PATH="$SCRIPTS:$PATH"
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$SCRIPTS:$PATH"
+
 
 # Functions...
 # ...single command Git push
-function gitsync() {
+gitsync() {
     git add .
     git commit -m "$1"
     git push
+}
+
+# FROM 1.2.0
+# Convenience functions for generating certain (.md, .zsh) file types
+mdfile() {
+    [[ ! -e untitled.md ]] && touch untitled.md
+}
+
+zfile() {
+    [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.x\n" > untitled.zsh
 }
 
 
