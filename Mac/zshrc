@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.2.0
+# Version 1.2.1
 
 # Options
 setopt AUTO_CD
@@ -53,7 +53,7 @@ autoload -Uz vcs_info
 add-zsh-hook precmd git_prompt
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes false
-zstyle ':vcs_info:git*' formats '%b'
+zstyle ':vcs_info:*' formats %b
 
 # ...input prompt
 PS2="%_... "
