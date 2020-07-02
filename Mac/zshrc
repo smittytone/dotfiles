@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.2.1
+# Version 1.3.0
 
 # Options
 setopt AUTO_CD
@@ -62,6 +62,7 @@ PS2="%_... "
 # ...list operations
 alias ls='gls -lhF --group-directories-first --color'
 alias la='gls -lahF --group-directories-first --color'
+alias lx='/bin/ls -la@'
 
 # ...tools
 alias python='python3'
