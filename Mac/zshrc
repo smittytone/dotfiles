@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.3.0
+# Version 1.3.1
 
 # Options
 setopt AUTO_CD
@@ -24,7 +24,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{13}%d%f > '
+PROMPT='%F{13}%d > %f'
 
 # ...right-hand side: use for Git repos
 # FROM 1.0.5 - use a git check to show status as well as repo namw
