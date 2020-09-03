@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.3.2
+# Version 1.3.3
 
 # Options
 setopt AUTO_CD
@@ -85,6 +85,10 @@ export PATH="/usr/local/sbin:$PATH"
 
 # ...Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+
+# FROM 1.3.3
+export EDITOR=/usr/local/bin/nano
 
 
 # FROM 1.0.5
