@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.4.0
+# Version 1.5.0
 
 # Options
 setopt AUTO_CD
@@ -35,9 +35,17 @@ git_prompt() {
     vcs_info
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
-        ref="%F{cyan}[${ref}]%f"
+        # FROM 1.5.0 -- show [UC] for repos with unmerged commits
+        local unmerged=$(git status)
+        unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
+        if [[ -n "$unmerged" ]]; then
+            unmerged=" %F{red}[UC]%f"
+        else
+            unmerged=""
+        fi
+        ref="%F{cyan}[${ref}]%f${unmerged}"
         if is_dirty; then
-            ref="%F{yellow}%B!%b%f ${ref}"
+            ref="%F{yellow}%B!!%b%f ${ref}"
         else
             ref="%F{green}%B•%b%f ${ref}"
         fi
