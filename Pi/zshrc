@@ -1,10 +1,11 @@
 # smittytone's zsh profile (Pi)
 #
-# 1.2.0
+# 1.3.0
 
 # Options
 setopt AUTO_CD
 setopt CORRECT
+unsetopt NOMATCH
 
 
 # History
@@ -20,7 +21,7 @@ compinit
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{white}%K{red}%d%k%f > '
+PROMPT='%F{magenta}%d >%f %F{green}'
 
 # ...right-hand side: use for Git repos
 # FROM 1.0.2 - use a git check to show status as well as repo namw
@@ -31,13 +32,17 @@ git_prompt() {
     vcs_info
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
-        ref="%F{cyan}[${ref}]%f"
-        if is_dirty; then
-            ref="%F{yellow}%B!%b%f ${ref}"
-        else
-            ref="%F{green}%B•%b%f ${ref}"
+        # FROM 1.3.0 -- use symbols for repo state
+        local symbol=$'\UF7E9'
+        local unmerged=$(git status)
+        unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
+        if [[ -n "$unmerged" ]]; then
+            symbol=$'\U1F7E5'
         fi
-        RPROMPT=$ref
+        if is_dirty; then
+            symbol=$'\U1F7E8'
+        fi
+        RPROMPT="%F{cyan}[${ref}]%f ${symbol}"
     else
         RPROMPT=''
     fi
