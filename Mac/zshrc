@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.5.1
+# Version 1.5.2
 
 # Options
 setopt AUTO_CD
@@ -24,7 +24,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{13}%d > %f'
+PROMPT='%F{13}%d >%f '
 
 # ...right-hand side: use for Git repos
 # FROM 1.0.5 - use a git check to show status as well as repo namw
@@ -35,17 +35,17 @@ git_prompt() {
     vcs_info
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
-        local sm=$'\U1F7E9'
-        # FROM 1.5.0 -- show [UC] for repos with unmerged commits
+        local colour="%F{green}"
+        # FROM 1.5.2 -- Colour for repos with unmerged commits or uncommitted files
         local unmerged=$(git status)
         unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
         if [[ -n "$unmerged" ]]; then
-            sm=$'\U1F7E5'
+            colour="%F{yellow}"
         fi
         if is_dirty; then
-            sm=$'\U1F7E8'
+            colour="%F{red}"
         fi
-        RPROMPT="%F{cyan}[${ref}]%f ${sm}"
+        RPROMPT="%F{cyan}[ ${colour}${ref}%F{cyan} ]%f"
     else
         RPROMPT=''
     fi
