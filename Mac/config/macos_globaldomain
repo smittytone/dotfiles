@@ -1,7 +1,7 @@
-# Adjust folder springiness behavior, disable system spell checking
+# Adjust folder springiness behaviour, disable system spell checking
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
-defaults write NSGlobalDomain com.apple.springing.delay -float 0.4
-# Disable press-and-hold for keys in favor of key repeat
+#defaults write NSGlobalDomain com.apple.springing.delay -float 0.4
+# Disable press-and-hold for keys in favour of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # Expand save panel by default

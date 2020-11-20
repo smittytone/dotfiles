@@ -9,4 +9,5 @@ set keycolor cyan
 set functioncolor cyan
 set numbercolor yellow
 set mouse
+set indicator
 include /usr/local/share/nano/*.nanorc

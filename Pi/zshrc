@@ -1,12 +1,13 @@
 
 # smittytone's zsh profile (Pi)
 #
-# 1.1.4
+# 1.3.0
 
 # Options
 setopt AUTO_CD
 setopt CORRECT
 setopt KSH_OPTION_PRINT
+unsetopt NOMATCH
 
 
 # History
@@ -22,7 +23,7 @@ compinit
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{red}%d >%f '
+PROMPT='%F{magenta}%d > %f'
 
 # ...right-hand side: use for Git repos
 # FROM 1.0.2 - use a git check to show status as well as repo namw
@@ -34,8 +35,13 @@ git_prompt() {
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
         colour="%F{green}"
-        if is_dirty; then
+        unmerged=$(git status)
+        unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
+        if [[ -n "$unmerged" ]]; then
             colour="%F{yellow}"
+        fi    
+        if is_dirty; then
+            colour="%F{red}"
         fi
         RPROMPT="%F{cyan}[ ${colour}${ref} %F{cyan}]%f"
     else

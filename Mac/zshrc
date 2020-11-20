@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.3.0
+# Version 1.5.2
 
 # Options
 setopt AUTO_CD
@@ -24,7 +24,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{13}%d%f > '
+PROMPT='%F{13}%d >%f '
 
 # ...right-hand side: use for Git repos
 # FROM 1.0.5 - use a git check to show status as well as repo namw
@@ -35,13 +35,17 @@ git_prompt() {
     vcs_info
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
-        ref="%F{cyan}[${ref}]%f"
-        if is_dirty; then
-            ref="%F{yellow}%B!%b%f ${ref}"
-        else
-            ref="%F{green}%B•%b%f ${ref}"
+        local colour="%F{green}"
+        # FROM 1.5.2 -- Colour for repos with unmerged commits or uncommitted files
+        local unmerged=$(git status)
+        unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
+        if [[ -n "$unmerged" ]]; then
+            colour="%F{yellow}"
         fi
-        RPROMPT=$ref
+        if is_dirty; then
+            colour="%F{red}"
+        fi
+        RPROMPT="%F{cyan}[ ${colour}${ref}%F{cyan} ]%f"
     else
         RPROMPT=''
     fi
@@ -86,13 +90,21 @@ export PATH="/usr/local/sbin:$PATH"
 # ...Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export EDITOR=/usr/local/bin/nano
+
 
 # FROM 1.0.5
 # Functions...
 # ...single command Git push
+# FROM 1.3.2 -- support empty messages
 gitsync() {
+    if [[ -z "$1" ]]; then
+        msg="Latest upload @ $(date)"
+    else
+        msg="$1"
+    fi
     git add .
-    git commit -m "$1"
+    git commit -m "$msg"
     git push
 }
 
@@ -106,6 +118,17 @@ zfile() {
     [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.x\n" > untitled.zsh
 }
 
+# FROM 1.4.0
+dlist() {
+    list=$(/bin/ls /dev/cu*)
+    while IFS= read -r device; do
+        bt=$(grep 'Bluetooth' < <(echo -e "$device"))
+        ap=$(grep 'TSAirPods' < <(echo -e "$device"))
+        if [[ -z "$bt" && -z "$ap" ]]; then
+            echo $device
+        fi
+    done <<< "$list"
+}
 
 # FT232H support...
 # ...report if device is connected and export required variables
@@ -125,3 +148,9 @@ fi
 
 # Display which shell is use
 echo "Running Shell from $SHELL"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
