@@ -8,4 +8,5 @@ set titlecolor white,red
 set keycolor cyan
 set functioncolor cyan
 set numbercolor yellow
+set indicator
 set mouse

@@ -1,10 +1,12 @@
+
 # smittytone's zsh profile (Pi)
 #
-# 1.2.0
+# 1.1.4
 
 # Options
 setopt AUTO_CD
 setopt CORRECT
+setopt KSH_OPTION_PRINT
 
 
 # History
@@ -20,7 +22,7 @@ compinit
 
 # Prompts...
 # ...left-hand side
-PROMPT='%F{white}%K{red}%d%k%f > '
+PROMPT='%F{red}%d >%f '
 
 # ...right-hand side: use for Git repos
 # FROM 1.0.2 - use a git check to show status as well as repo namw
@@ -31,13 +33,11 @@ git_prompt() {
     vcs_info
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
-        ref="%F{cyan}[${ref}]%f"
+        colour="%F{green}"
         if is_dirty; then
-            ref="%F{yellow}%B!%b%f ${ref}"
-        else
-            ref="%F{green}%B•%b%f ${ref}"
+            colour="%F{yellow}"
         fi
-        RPROMPT=$ref
+        RPROMPT="%F{cyan}[ ${colour}${ref} %F{cyan}]%f"
     else
         RPROMPT=''
     fi
@@ -52,7 +52,7 @@ zstyle ':vcs_info:*' check-for-changes false
 zstyle ':vcs_info:git*' formats '%b'
 
 # ...input prompt
-PS2="%_ ... "
+PS2="%_... "
 
 # Aliases...
 # ...list operations
@@ -68,14 +68,16 @@ alias python='python3'
 
 
 # List operation colour scheme
-export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
+LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 
 
 # Path variables...
 # ...Git repos
 export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
-export PATH="$HOME/bin:$SCRIPTS:$PATH"
+export PATH="$SCRIPTS:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 
 # Functions...
@@ -86,16 +88,13 @@ gitsync() {
     git push
 }
 
-# FROM 1.2.0
-# Convenience functions for generating certain (.md, .zsh) file types
 mdfile() {
-    [[ ! -e untitled.md ]] && touch untitled.md
+    touch untitled.md
 }
 
 zfile() {
-    [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.x\n" > untitled.zsh
+    [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.z" > untitled.zsh
 }
-
 
 # Display which shell is use
 echo "Running Shell from $SHELL"
