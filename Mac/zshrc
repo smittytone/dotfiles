@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.5.2
+# Version 1.5.4
 
 # Options
 setopt AUTO_CD
@@ -90,8 +90,11 @@ export PATH="/usr/local/sbin:$PATH"
 # ...Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Set Nano as editor
 export EDITOR=/usr/local/bin/nano
 
+# Set Raspberry Pi Pico SDK path
+export PICO_SDK_PATH="$GIT/pico-sdk"
 
 # FROM 1.0.5
 # Functions...
@@ -120,11 +123,19 @@ zfile() {
 
 # FROM 1.4.0
 dlist() {
-    list=$(/bin/ls /dev/cu*)
+    local list=$(/bin/ls /dev/cu.*)
+    # Replace the following line with your own 'to be ignored' items
+    local ignores=(Bluetooth TSAirPods TSSoloPro debug)
     while IFS= read -r device; do
-        bt=$(grep 'Bluetooth' < <(echo -e "$device"))
-        ap=$(grep 'TSAirPods' < <(echo -e "$device"))
-        if [[ -z "$bt" && -z "$ap" ]]; then
+        local do_show=1
+        for ignorable in "${ignores[@]}"; do
+            local ignore=$(grep "$ignorable" < <(echo -e "$device"))
+            if [[ -n "$ignore" ]]; then
+                do_show=0
+                break
+            fi
+        done
+        if [[ $do_show -eq 1 ]]; then
             echo $device
         fi
     done <<< "$list"
