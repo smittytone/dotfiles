@@ -1,7 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.6.2
-
+# Version 1.6.3
 
 # Options
 setopt AUTO_CD
@@ -18,6 +17,7 @@ SAVEHIST=100
 # Autocompletion...
 autoload -Uz compinit
 compinit
+
 
 # ...add case-insensitive path-completion for macOS
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
@@ -73,6 +73,7 @@ alias lx='/bin/ls -la@'
 # ...tools
 alias python='python3'
 alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
+alias impt='/Users/tsmith/GitHub/imp-central-impt/bin/impt'
 
 
 # Exports...
@@ -122,16 +123,6 @@ gitsync() {
     git push
 }
 
-# FROM 1.2.0
-# Convenience functions for generating certain (.md, .zsh) file types
-mdfile() {
-    [[ ! -e untitled.md ]] && touch untitled.md
-}
-
-zfile() {
-    [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.x\n" > untitled.zsh
-}
-
 # FROM 1.4.0
 dlist() {
     local list=$(/bin/ls /dev/cu.*)
@@ -152,25 +143,26 @@ dlist() {
     done <<< "$list"
 }
 
-
 # FROM 1.6.1
 # Autoload useful ZSH functions
 autoload zmv
 
 
-# Devices...
 # FT232H support...
 # ...report if device is connected and export required variables
-if [ -e /dev/cu.usbserial-* ]; then
+devices=($(/bin/ls /dev/cu.usbserial-* 2>/dev/null))
+if [ ${#devices} -gt 0 ]; then
     export BLINKA_FT232H=1
-    echo "FT232H connected"
+    echo "${#devices}x FT232H connected"
 fi
+
 
 # MCP2221 support...
 # ...report if device is connected and export required variables
-if [ -e /dev/cu.usbmodem* ]; then
+devices=($(/bin/ls /dev/cu.usbmodem* 2>/dev/null))
+if [ ${#devices} -gt 0 ]; then
     export BLINKA_MCP2221=1
-    echo "MCP2221 connected"
+    echo "${#devices}x MCP2221 connected"
 fi
 
 
