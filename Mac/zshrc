@@ -1,27 +1,23 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.6.3
+# Version 1.6.4
 
 # Options
 setopt AUTO_CD
 setopt CORRECT
 unsetopt NOMATCH
 
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100
 SAVEHIST=100
 
-
 # Autocompletion...
 autoload -Uz compinit
 compinit
 
-
 # ...add case-insensitive path-completion for macOS
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-
 
 # Prompts...
 # ...left-hand side
@@ -63,7 +59,6 @@ zstyle ':vcs_info:*' formats %b
 # ...input prompt
 PS2="%_... "
 
-
 # Aliases...
 # ...list operations
 alias ls='gls -lhF --group-directories-first --color'
@@ -72,9 +67,7 @@ alias lx='/bin/ls -la@'
 
 # ...tools
 alias python='python3'
-alias log='screen /dev/tty.usbserial-FTWHFLU9D 115200'
 alias impt='/Users/tsmith/GitHub/imp-central-impt/bin/impt'
-
 
 # Exports...
 # List operation colour scheme
@@ -92,7 +85,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Set Raspberry Pi Pico SDK path
 export PICO_SDK_PATH="$GIT/pico-sdk"
 
-
 # FROM 1.6.0
 # Handle platfoms
 CPU=$(uname -p)
@@ -107,7 +99,6 @@ else
     export EDITOR=/usr/local/bin/nano
     alias nano=/usr/local/bin/nano
 fi
-
 
 # Functions...
 # ...single command Git push
@@ -125,46 +116,24 @@ gitsync() {
 
 # FROM 1.4.0
 dlist() {
-    local list=$(/bin/ls /dev/cu.*)
-    # Replace the following line with your own 'to be ignored' items
-    local ignores=(Bluetooth TSAirPods TSSoloPro debug)
-    while IFS= read -r device; do
-        local do_show=1
-        for ignorable in "${ignores[@]}"; do
-            local ignore=$(grep "$ignorable" < <(echo -e "$device"))
-            if [[ -n "$ignore" ]]; then
-                do_show=0
-                break
-            fi
-        done
-        if [[ $do_show -eq 1 ]]; then
+    local devices=($(/bin/ls /dev/cu.usb* 2>/dev/null))
+    if [ ${#devices} -gt 0 ]; then
+        for device in $devices; do
             echo $device
-        fi
-    done <<< "$list"
+        done
+    fi
 }
 
 # FROM 1.6.1
 # Autoload useful ZSH functions
 autoload zmv
 
-
-# FT232H support...
-# ...report if device is connected and export required variables
-devices=($(/bin/ls /dev/cu.usbserial-* 2>/dev/null))
+# FT232H/MCP2221/etc support...
+devices=($(/bin/ls /dev/cu.usb* 2>/dev/null))
 if [ ${#devices} -gt 0 ]; then
     export BLINKA_FT232H=1
-    echo "${#devices}x FT232H connected"
-fi
-
-
-# MCP2221 support...
-# ...report if device is connected and export required variables
-devices=($(/bin/ls /dev/cu.usbmodem* 2>/dev/null))
-if [ ${#devices} -gt 0 ]; then
     export BLINKA_MCP2221=1
-    echo "${#devices}x MCP2221 connected"
 fi
-
 
 # GCP...
 # The next line updates PATH for the Google Cloud SDK.
@@ -172,7 +141,6 @@ if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cl
 
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
-
 
 # Display which shell is use
 echo "Running Shell from $SHELL"
