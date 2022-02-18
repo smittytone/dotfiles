@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.6.7
+# Version 1.6.8
 
 # Options
 setopt AUTO_CD
@@ -84,6 +84,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Set Raspberry Pi Pico SDK path
 export PICO_SDK_PATH="$HOME/GitHub/pico-sdk"
 
+# FROM 1.6.6
+# Brew
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
 # FROM 1.6.0
 # Handle platfoms
 CPU=$(uname -p)
@@ -144,9 +148,9 @@ if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cl
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
 
-# FROM 1.6.6
-# Brew
-export HOMEBREW_NO_INSTALL_CLEANUP=1
+# Place for non-repo env vars
+if [[ ! -e .exports ]]; then touch .exports; fi
+source ~/.exports
 
 # Display which shell is use
 echo "Running Shell from $SHELL"
