@@ -1,7 +1,6 @@
-
 # smittytone's zsh profile (Pi)
 #
-# 1.3.1
+# 1.4.0
 
 # Options
 setopt AUTO_CD
@@ -9,17 +8,14 @@ setopt CORRECT
 setopt KSH_OPTION_PRINT
 unsetopt NOMATCH
 
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100
 SAVEHIST=100
 
-
 # Autocompletion
 autoload -Uz compinit
 compinit
-
 
 # Prompts...
 # ...left-hand side
@@ -35,11 +31,11 @@ git_prompt() {
     local ref="$vcs_info_msg_0_"
     if [[ -n "$ref" ]]; then
         local colour="%F{green}"
-        local unmerged=$(git status)
+        local unmerged=$(git status --ignore-submodules)
         unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
         if [[ -n "$unmerged" ]]; then
             colour="%F{yellow}"
-        fi    
+        fi
         if is_dirty; then
             colour="%F{red}"
         fi
@@ -72,19 +68,20 @@ alias rs='sudo shutdown -r now'
 # ...tools
 alias python='python3'
 
-
 # List operation colour scheme
 LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
-
 
 # Path variables...
 # ...Git repos
 export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
-export PATH="$SCRIPTS:$PATH"
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$SCRIPTS:$PATH"
+
+# ...Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Set Raspberry Pi Pico SDK path
+export PICO_SDK_PATH="$HOME/GitHub/pico-sdk"
 
 # Functions...
 # ...single command Git push
@@ -106,6 +103,35 @@ mdfile() {
 zfile() {
     [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.z" > untitled.zsh
 }
+
+# FROM 1.4.0
+dlist() {
+    local devices=($(/bin/ls /dev/cu.usb* 2>/dev/null))
+    if [ ${#devices} -gt 0 ]; then
+        if [[ ${#devices} -eq 1 ]]; then
+            echo $devices
+        else
+            local count=1
+            for device in $devices; do
+                if [[ -n "$1" && "$1" == "$count" ]]; then
+                    echo $device
+                elif [[ -z "$1" ]]; then
+                    echo "$count. $device"
+                fi
+                ((count+=1))
+            done
+        fi
+    fi
+}
+
+# FROM 1.4.0
+# Autoload useful ZSH functions
+autoload zmv
+
+# FROM 1.4.0
+# Place for non-repo env vars
+if [[ ! -e .exports ]]; then touch .exports; fi
+source ~/.exports
 
 # Display which shell is use
 echo "Running Shell from $SHELL"

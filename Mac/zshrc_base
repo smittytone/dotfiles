@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.6.8
+# Version 1.6.9
 
 # Options
 setopt AUTO_CD
@@ -34,7 +34,7 @@ git_prompt() {
     if [[ -n "$ref" ]]; then
         local colour="%F{green}"
         # FROM 1.5.2 -- Colour for repos with unmerged commits or uncommitted files
-        local unmerged=$(git status)
+        local unmerged=$(git status --ignore-submodules)
         unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
         if [[ -n "$unmerged" ]]; then
             colour="%F{yellow}"
