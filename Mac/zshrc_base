@@ -149,8 +149,9 @@ if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cl
 if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
 
 # Place for non-repo env vars
-if [[ ! -e .exports ]]; then touch .exports; fi
-source ~/.exports
+if [[ -e ~/.exports ]]; then
+    source ~/.exports
+fi
 
 # Display which shell is use
 echo "Running Shell from $SHELL"
