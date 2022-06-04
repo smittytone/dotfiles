@@ -136,8 +136,8 @@ dlist() {
 autoload zmv
 
 # Place for non-repo env vars
-if [[ -e ~/.ts_exports ]]; then
-    source ~/.ts_exports
+if [[ -e ~/.exports ]]; then
+    source ~/.exports
 fi
 
 # Display which shell is use
