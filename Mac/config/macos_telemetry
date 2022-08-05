@@ -1,0 +1,3 @@
+# Disable telemetry/data sharing
+defaults write /Library/Application\ Support/CrashReporter/DiagnosticsMessagesHistory.plist AutoSubmit -bool false
+defaults write /Library/Application\ Support/CrashReporter/DiagnosticsMessagesHistory.plist ThirdPartyDataSubmit -bool false

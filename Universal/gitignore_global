@@ -6,6 +6,7 @@
 *.exe
 *.o
 *.so
+build/
 
 # Packages #
 ############
@@ -39,3 +40,4 @@ Thumbs.db
 # smittytone specific #
 #######################
 .mntpoint/*
+*.xcworkspace/xcuserdata/*.xcuserdatad
