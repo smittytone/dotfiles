@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Pi)
 #
-# 1.4.0
+# 1.4.2
 
 # Options
 setopt AUTO_CD
@@ -67,6 +67,7 @@ alias rs='sudo shutdown -r now'
 
 # ...tools
 alias python='python3'
+alias gui='startx'
 
 # List operation colour scheme
 LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
@@ -81,7 +82,7 @@ export PATH="$HOME/bin:$SCRIPTS:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set Raspberry Pi Pico SDK path
-export PICO_SDK_PATH="$HOME/GitHub/pico-sdk"
+export PICO_SDK_PATH="$HOME/GitHub/RP2040-FreeRTOS/pico-sdk"
 
 # Functions...
 # ...single command Git push
@@ -105,32 +106,12 @@ zfile() {
 }
 
 # FROM 1.4.0
-dlist() {
-    local devices=($(/bin/ls /dev/cu.usb* 2>/dev/null))
-    if [ ${#devices} -gt 0 ]; then
-        if [[ ${#devices} -eq 1 ]]; then
-            echo $devices
-        else
-            local count=1
-            for device in $devices; do
-                if [[ -n "$1" && "$1" == "$count" ]]; then
-                    echo $device
-                elif [[ -z "$1" ]]; then
-                    echo "$count. $device"
-                fi
-                ((count+=1))
-            done
-        fi
-    fi
-}
-
-# FROM 1.4.0
 # Autoload useful ZSH functions
 autoload zmv
 
 # FROM 1.4.0
 # Place for non-repo env vars
-if [[ ! -e .exports ]]; then touch .exports; fi
+if [[ ! -e ~/.exports ]]; then touch ~/.exports; fi
 source ~/.exports
 
 # Display which shell is use
