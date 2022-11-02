@@ -11,3 +11,4 @@ pi.zsh
 outman.zsh
 todisk.zsh
 toserver.zsh
+deploy.sh
