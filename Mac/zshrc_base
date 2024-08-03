@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.7.0
+# Version 1.7.2
 
 # Options
 setopt AUTO_CD
@@ -77,10 +77,11 @@ export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
 export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
 export PATH="$SCRIPTS:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # FROM 1.6.6
 # Brew
-export HOMEBREW_NO_INSTALL_CLEANUP=1
+#export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 # FROM 1.6.0
 # Handle platfoms
@@ -136,9 +137,7 @@ dlist() {
 autoload zmv
 
 # Place for non-repo env vars
-if [[ -e ~/.exports ]]; then
-    source ~/.exports
-fi
+[[ -e ~/.exports ]] && source ~/.exports
 
 # Display which shell is use
 echo "Running Shell from $SHELL"

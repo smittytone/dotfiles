@@ -1,6 +1,6 @@
-# Adjust Dock behaviour: set scale effect, place it on the left of the screen with 40px icons
+# Adjust Dock behaviour: set scale effect, place it on the left of the screen with 48px icons
 #                        and don't minimize windows into the app icons
 defaults write com.apple.dock mineffect -string "scale"
 defaults write com.apple.dock orientation -string "left"
-defaults write com.apple.dock tilesize -int 40
+defaults write com.apple.dock tilesize -int 48
 defaults write com.apple.dock minimize-to-application -int 0

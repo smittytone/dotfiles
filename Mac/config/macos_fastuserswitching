@@ -1,2 +1,2 @@
 # Disable Fast User Switching
-defaults write /Library/Preferences/.GlobalPreferences.plist MultipleSessionEnabled -bool false
+sudo defaults write /Library/Preferences/.GlobalPreferences.plist MultipleSessionEnabled -bool false

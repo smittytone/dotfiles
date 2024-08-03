@@ -1,2 +1,2 @@
-# Disable Bonjour advertismenets
+# Disable Bonjour ads
 # defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool true

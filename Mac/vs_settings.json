@@ -498,9 +498,16 @@
     "python.linting.enabled": false,
     "window.zoomLevel": 0,
     "editor.detectIndentation": false,
-    "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": true,
     "editor.copyWithSyntaxHighlighting": false,
     "editor.emptySelectionClipboard": false,
-    "workbench.colorTheme": "Atom One Dark"
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "workbench.colorTheme": "Atom One Dark",
+    "security.workspace.trust.startupPrompt": "never",
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.emptyWindow": false,
+    "security.workspace.trust.banner": "never",
+    "workbench.editor.empty.hint": "hidden",
+    "git.openRepositoryInParentFolders": "never"
 }
