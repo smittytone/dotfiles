@@ -12,3 +12,4 @@ outman.zsh
 todisk.zsh
 toserver.zsh
 deploy.sh
+media-backup.zsh
