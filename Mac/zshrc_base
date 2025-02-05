@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.7.2
+# Version 1.8.0
 
 # Options
 setopt AUTO_CD
@@ -68,6 +68,9 @@ alias lx='/bin/ls -la@'
 # ...tools
 alias python='python3'
 
+# ...code
+alias gc='security find-internet-password -a smittytone -s github.com -w -g'
+
 # Exports...
 # List operation colour scheme
 export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
@@ -78,6 +81,10 @@ export GIT="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
 export PATH="$SCRIPTS:$PATH"
 export PATH="$HOME/bin:$PATH"
+
+# FROM 1.7.3
+# ...pipx
+export PATH="$HOME/.local/bin:$PATH"
 
 # FROM 1.6.6
 # Brew
@@ -113,6 +120,8 @@ gitsync() {
 
 # FROM 1.4.0 -- add function
 # FROM 1.6.7 -- support multiple devices
+# FROM 1.8.0 -- this function is now a separate cli app
+: '
 dlist() {
     local devices=($(/bin/ls /dev/cu.usb* 2>/dev/null))
     if [ ${#devices} -gt 0 ]; then
@@ -131,6 +140,7 @@ dlist() {
         fi
     fi
 }
+'
 
 # FROM 1.6.1
 # Autoload useful ZSH functions
@@ -138,6 +148,12 @@ autoload zmv
 
 # Place for non-repo env vars
 [[ -e ~/.exports ]] && source ~/.exports
+
+#FROM 1.7.4
+alias startesp='. "$GIT/esp-idf/export.sh"'
+
+#FROM 1.7.5
+alias gitcred='security find-internet-password -a smittytone -s github.com -w -g'
 
 # Display which shell is use
 echo "Running Shell from $SHELL"
