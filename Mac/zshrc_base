@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.8.0
+# Version 1.8.1
 
 # Options
 setopt AUTO_CD
@@ -77,7 +77,7 @@ export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
 
 # Path variables...
 # ...Git repos
-export GIT="$HOME/GitHub"
+export GH="$HOME/GitHub"
 export SCRIPTS="$GIT/scripts"
 export PATH="$SCRIPTS:$PATH"
 export PATH="$HOME/bin:$PATH"
