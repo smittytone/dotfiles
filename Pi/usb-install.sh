@@ -1,17 +1,25 @@
-sudo apt update && apt install -y dnsmasq git
-[ mkdir "$HOME/GitHub" ] && cd "$HOME/GitHub"
+#!/bin/bash
+[ -d "${HOME}/GitHub/dofiles"] || (echo "[ERROR] No dotfiles repo cloned to ${HOME}/GitHub" ; exit 1)
+#
+# Update bootfiles
+sudo echo dtoverlay=dwc2 >> /boot/firmware/config.txt
+sudo echo ' modules-load=dwc2' >> /boot/firmware/cmdline.txt
+sudo echo libcomposite > /etc/modules-load.d/usb-gadget.conf
+#
+# Copy service scripts
+cd "${HOME}/GitHub/dotfiles/Pi"
 sudo cp usb-gadget.service /lib/systemd/system
 sudo cp usb-gagdet.sh /usr/local/sbin
 sudo chmod +x /usr/local/sbin/usb-gadget.sh
-sudo systemctl enable usbgadget.service
+sudo systemctl enable usb-gadget.service
 #
+# Set up connection via nmcli
 sudo nmcli con add type bridge ifname br0
 sudo nmcli con add type bridge-slave ifname usb0 master br0
 #sudo nmcli con add type bridge-slave ifname usb1 master br0
 sudo nmcli connection modify bridge-br0 ipv4.method manual ipv4.addresses 10.55.0.1/24
 #
-sudo echo libcomposite > /etc/modules-load.d/usb-gadget.conf
-#
+# Set up dnsmasq
 sudo cat <<EOT > /etc/dnsmasq.d/br0
 dhcp-authoritative
 dhcp-rapid-commit
