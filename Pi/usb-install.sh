@@ -3,6 +3,7 @@ sudo apt update && apt install -y dnsmasq git
 sudo cp usb-gadget.service /lib/systemd/system
 sudo cp usb-gagdet.sh /usr/local/sbin
 sudo chmod +x /usr/local/sbin/usb-gadget.sh
+sudo systemctl enable usbgadget.service
 #
 sudo nmcli con add type bridge ifname br0
 sudo nmcli con add type bridge-slave ifname usb0 master br0
