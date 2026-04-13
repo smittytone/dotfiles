@@ -12,6 +12,13 @@
 #     2. git clone https://github.com/smittytone/dotfiles (this script and others)
 #  - Operation:
 #     - Must be run as sudo
+#
+
+# Key file locations (separated out to ease script testing)
+CONFIG=/boot/firmware/config.txt
+CMDLIN=/boot/firmware/cmdline.txt
+MODCON=/etc/modules-load.d/usb-gadget.conf
+DNSCON=/etc/dnsmasq.d/br0
 
 [ ! ${EUID} -eq 0 ] && (echo "[ERROR] Please run this script using sudo"; exit 1)
 [ -d "${HOME}/GitHub/dotfiles" ] || (echo "[ERROR] No dotfiles repo cloned to ${HOME}/GitHub" ; exit 1)
@@ -20,25 +27,24 @@ result=$(echo "${result} | grep 'not found'")
 [ -n "${result}" ] && (echo "[ERROR] dnsmasq not installed" ; exit 1)
 
 # Update bootfiles
-sudo echo dtoverlay=dwc2 >> /boot/firmware/config.txt
-sudo echo ' modules-load=dwc2' >> /boot/firmware/cmdline.txt
-sudo echo libcomposite > /etc/modules-load.d/usb-gadget.conf
+echo dtoverlay=dwc2 >> "${CONFIG}"
+echo ' modules-load=dwc2' >> "${CMDLIN}"
+echo libcomposite > "${MODCON}"
 
 # Copy service scripts
 cd "${HOME}/GitHub/dotfiles/Pi"
-sudo cp usb-gadget.service /lib/systemd/system
-sudo cp usb-gagdet.sh /usr/local/sbin
-sudo chmod +x /usr/local/sbin/usb-gadget.sh
-sudo systemctl enable usb-gadget.service
+cp usb-gadget.service /lib/systemd/system
+cp usb-gagdet.sh /usr/local/sbin
+chmod +x /usr/local/sbin/usb-gadget.sh
+systemctl enable usb-gadget.service
 
 # Set up connection via nmcli
-sudo nmcli con add type bridge ifname br0
-sudo nmcli con add type bridge-slave ifname usb0 master br0
-#sudo nmcli con add type bridge-slave ifname usb1 master br0
-sudo nmcli connection modify bridge-br0 ipv4.method manual ipv4.addresses 10.55.0.1/24
+nmcli con add type bridge ifname br0
+nmcli con add type bridge-slave ifname usb0 master br0
+nmcli connection modify bridge-br0 ipv4.method manual ipv4.addresses 10.55.0.1/24
 
 # Set up dnsmasq
-sudo cat <<EOT > /etc/dnsmasq.d/br0
+cat <<EOT > "${DNSCON}"
 dhcp-authoritative
 dhcp-rapid-commit
 no-ping
