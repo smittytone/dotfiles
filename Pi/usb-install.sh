@@ -10,8 +10,14 @@
 # - Requires:
 #     1. sudo apt install git dnsmasq (git to get dotfiles; dnsmasq for the gadget)
 #     2. git clone https://github.com/smittytone/dotfiles (this script and others)
+#  - Operation:
+#     - Must be run as sudo
 
-[ -d "${HOME}/GitHub/dofiles"] || (echo "[ERROR] No dotfiles repo cloned to ${HOME}/GitHub" ; exit 1)
+[ ! ${EUID} -eq 0 ] && (echo "[ERROR] Please run this script using sudo"; exit 1)
+[ -d "${HOME}/GitHub/dotfiles" ] || (echo "[ERROR] No dotfiles repo cloned to ${HOME}/GitHub" ; exit 1)
+result=$(which dnsmasq)
+result=$(echo "${result} | grep 'not found'")
+[ -n "${result}" ] && (echo "[ERROR] dnsmasq not installed" ; exit 1)
 
 # Update bootfiles
 sudo echo dtoverlay=dwc2 >> /boot/firmware/config.txt
