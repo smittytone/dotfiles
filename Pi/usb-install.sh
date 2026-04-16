@@ -20,11 +20,9 @@ CMDLIN=/boot/firmware/cmdline.txt
 MODCON=/etc/modules-load.d/usb-gadget.conf
 DNSCON=/etc/dnsmasq.d/br0
 
-[ ! ${EUID} -eq 0 ] && (echo "[ERROR] Please run this script using sudo"; exit 1)
-[ -d "${HOME}/GitHub/dotfiles" ] || (echo "[ERROR] No dotfiles repo cloned to ${HOME}/GitHub" ; exit 1)
-result=$(which dnsmasq)
-result=$(echo "${result} | grep 'not found'")
-[ -n "${result}" ] && (echo "[ERROR] dnsmasq not installed" ; exit 1)
+[ ${EUID} -eq 0 ] || echo "[ERROR] Please run this script using sudo" ; exit 1
+[ -d "${HOME}/GitHub/dotfiles" ] || echo "[ERROR] No dotfiles repo cloned to ${HOME}/GitHub" ; exit 1
+[ -d "/etc/dnsmasq.d" ] || echo "[ERROR] dnsmasq not installed" ; exit 1
 
 # Update bootfiles
 echo dtoverlay=dwc2 >> "${CONFIG}"
