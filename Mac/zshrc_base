@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Mac)
 #
-# Version 1.8.1
+# Version 1.8.2
 
 # Options
 setopt AUTO_CD
@@ -68,9 +68,6 @@ alias lx='/bin/ls -la@'
 # ...tools
 alias python='python3'
 
-# ...code
-alias gc='security find-internet-password -a smittytone -s github.com -w -g'
-
 # Exports...
 # List operation colour scheme
 export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
@@ -78,7 +75,7 @@ export LS_COLORS="$LS_COLORS:di=1;36:ln=0;93:ex=1;35"
 # Path variables...
 # ...Git repos
 export GH="$HOME/GitHub"
-export SCRIPTS="$GIT/scripts"
+export SCRIPTS="$GH/scripts"
 export PATH="$SCRIPTS:$PATH"
 export PATH="$HOME/bin:$PATH"
 
