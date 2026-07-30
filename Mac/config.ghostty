@@ -1,0 +1,5 @@
+foreground = cyan
+theme = Terminal Basic Dark
+shell-integration-features = no-cursor
+cursor-style = block
+macos-option-as-alt = true
