@@ -10,4 +10,6 @@ set functioncolor cyan
 set numbercolor yellow
 set mouse
 set indicator
+set nowrap
+set softwrap
 include /opt/homebrew/share/nano/*.nanorc

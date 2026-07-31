@@ -8,3 +8,6 @@ Obligatory dot files repo. Mac-, Pi- and Ubuntu-specific files in their respecti
     * Copy `nanorc` to `/root` so it gets applied when *nano* is run as `sudo`.
 * Mac
     * `config.ghostty` goes into `$HOME/Library/Application\ Support/com.mitchellh.ghostty`.
+    * `zed-settings.json` moves to `$HOME/.config/zed/settings.json`.
+* Universal
+    * Copy skills directories to `~/.agents/skills/`.

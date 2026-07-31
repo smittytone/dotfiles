@@ -21,7 +21,7 @@ These instructions apply to the entire repository. Keep changes focused on the d
 - Do not commit secrets, private keys, machine-specific credentials, or generated personal data.
 - Update `README.md` when a change alters setup steps or platform behavior.
 - Do not use Oxford Commas in text, and use British English.
-- Do not wrap text to a specific width.
+- One line per paragraph/list item in Markdown.
 
 ## Validation
 

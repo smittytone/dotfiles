@@ -1,0 +1,123 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+    "tab_size": 4,
+    "edit_predictions": {
+        "allow_data_collection": "no"
+    },
+    "agent_servers": {
+        "claude-acp": {
+            "type": "registry"
+        }
+    },
+    "restore_on_startup": "empty_tab",
+    "session": {
+        "trust_all_worktrees": true
+    },
+    "when_closing_with_no_tabs": "close_window",
+    "on_last_window_closed": "quit_app",
+    "project_panel": {
+        "auto_open": {
+            "on_create": false,
+            "on_paste": false
+        },
+        "dock": "left"
+    },
+    "outline_panel": {
+        "dock": "left"
+    },
+    "collaboration_panel": {
+        "dock": "left"
+    },
+    "agent": {
+        "sandbox_permissions": {
+            "allow_fs_write_all": true
+        },
+        "tool_permissions": {
+            "tools": {
+                "fetch": {
+                    "always_allow": [
+                        {
+                            "pattern": "^https?://www\\.raspberrypi\\.com"
+                        }
+                    ]
+                }
+            }
+        },
+        "default_profile": "write",
+        "sidebar_side": "right",
+        "dock": "right",
+        "favorite_models": [],
+        "model_parameters": []
+    },
+    "git_panel": {
+        "dock": "left"
+    },
+    "format_on_save": "off",
+    "completions": {
+        "words": "disabled"
+    },
+    "languages": {
+        "Shell Script": {
+            "format_on_save": "off",
+            "show_wrap_guides": false
+        },
+        "Typst": {
+            "indent_guides": {
+            }
+        },
+        "YAML": {
+            "format_on_save": "off",
+        },
+        "JavaScript": {
+            "format_on_save": "off",
+        },
+        "Python": {
+            "format_on_save": "off",
+            "show_wrap_guides": false,
+        },
+        "Markdown": {
+            "auto_indent": "preserve_indent",
+            "remove_trailing_whitespace_on_save": true,
+        },
+        "HTML": {
+            "format_on_save": "off",
+        },
+        "reST": {
+            "language_servers": ["!esbonio"],
+        },
+    },
+    "tabs": {
+        "show_close_button": "always",
+        "activate_on_close": "left_neighbour",
+        "git_status": true,
+    },
+    "telemetry": {
+        "diagnostics": true,
+        "metrics": false,
+    },
+    "base_keymap": "VSCode",
+    "minimap": {
+        "show": "never",
+    },
+    "buffer_font_fallbacks": ["Menlo", "Monaco", "Courier New", "monospace"],
+    "buffer_font_family": "SF Mono",
+    "show_whitespaces": "none",
+    "soft_wrap": "editor_width",
+    "ui_font_size": 16,
+    "buffer_font_size": 14.0,
+    "theme": {
+        "mode": "system",
+        "light": "One Light",
+        "dark": "One Dark",
+    },
+    "terminal": {
+        "detect_venv": "off",
+    },
+}

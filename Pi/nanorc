@@ -10,3 +10,5 @@ set functioncolor cyan
 set numbercolor yellow
 set indicator
 set mouse
+set nowrap
+set softwrap
