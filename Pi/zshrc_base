@@ -1,6 +1,6 @@
 # smittytone's zsh profile (Pi)
 #
-# 1.4.3
+# 1.4.8
 
 # Options
 setopt AUTO_CD
@@ -29,11 +29,11 @@ git_prompt() {
     }
     vcs_info
     local ref="$vcs_info_msg_0_"
-    if [[ -n "$ref" ]]; then
+    if [ -n "$ref" ]; then
         local colour="%F{green}"
         local unmerged=$(git status --ignore-submodules)
         unmerged=$(grep 'is ahead' < <((echo -e "$unmerged")))
-        if [[ -n "$unmerged" ]]; then
+        if [ -n "$unmerged" ]; then
             colour="%F{yellow}"
         fi
         if is_dirty; then
@@ -67,27 +67,35 @@ alias rs='sudo shutdown -r now'
 
 # ...tools
 alias python='python3'
-alias gui='startx'
+alias gui='gnome-session --session gnome-wayland'
+alias activate='source .python/bin/activate'
+
 
 # List operation colour scheme
 LS_COLORS=$LS_COLORS:'di=0;36:ln=0;93:ex=0;35:' ; export LS_COLORS
 
 # Path variables...
 # ...Git repos
-export GH="$HOME/GitHub"
-export SCRIPTS="$GIT/scripts"
-export PATH="$HOME/bin:$SCRIPTS:$PATH"
+export GH="${HOME}/GitHub"
+export SCRIPTS="${GH}/scripts"
+export PATH="$HOME/bin:${SCRIPTS}:${PATH}"
 
 # ...Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${HOME}/.cargo/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${PATH}"
 
+# ...Go
+export PATH="/usr/local/go/bin:${PATH}"
+
+# ...Swift
+export PATH="${HOME}/.local/usr/bin:${PATH}"
 # Set Raspberry Pi Pico SDK path
-export PICO_SDK_PATH="$HOME/GitHub/RP2040-FreeRTOS/pico-sdk"
+export PICO_SDK_PATH="${GH}/pico-sdk"
 
 # Functions...
 # ...single command Git push
 gitsync() {
-    if [[ -z "$1" ]]; then
+    if [ -z "$1" ]; then
         msg="Uploaded @ $(date)"
     else
         msg="$1"
@@ -97,12 +105,12 @@ gitsync() {
     git push
 }
 
-mdfile() {
-    touch untitled.md
+md() {
+    touch untitled.md && nano untitled.md
 }
 
-zfile() {
-    [[ ! -e untitled.zsh ]] && echo "#!/bin/zsh\n\n#\n# Version x.y.z" > untitled.zsh
+zscript() {
+    if [ ! -e untitled.zsh ];  then echo "#!/bin/zsh\n\n#\n# Version x.y.z" > untitled.zsh; fi
 }
 
 # FROM 1.4.0
@@ -111,7 +119,7 @@ autoload zmv
 
 # FROM 1.4.0
 # Place for non-repo env vars
-if [[ ! -e ~/.exports ]]; then touch ~/.exports; fi
+if [ ! -e ~/.exports ]; then touch ~/.exports; fi
 source ~/.exports
 
 # Display which shell is use
